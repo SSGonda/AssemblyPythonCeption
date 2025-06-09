@@ -13,8 +13,8 @@
 
 - Member 1: Part A
 - Member 2: Part A
-- Member 3: Part B instructions: 1-28, 31, 40, 55, 65-78
-- Member 4: Part B instructions: 33-34, 39, 47-53, partial on 19-21
+- Member 3: Part B
+- Member 4: Part B
 
 ## Description
 
