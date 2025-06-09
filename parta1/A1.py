@@ -136,8 +136,7 @@ for i, command in enumerate(commands):
         for j in range(len(commands)):
             cmd_args = commands[j].split()
             cmd_args = [
-                str(label_as_instruction) if arg == label else arg
-                for arg in cmd_args
+                str(label_as_instruction) if arg == label else arg for arg in cmd_args
             ]
             commands[j] = " ".join(cmd_args)
 
@@ -183,7 +182,7 @@ def assembler(
             reg = int(reg)
             # we are ensured start is at most 4 bits # reg will be a bit string, convert start and end to bit strings as well
             converted_instr = (
-                f"{int(start, 16):04b}" + f'{reg:03b}' + end
+                f"{int(start, 16):04b}" + f"{reg:03b}" + end
             )  # end is only 1 bit can put it as is
 
             if form == "bin":
@@ -296,6 +295,7 @@ def assembler(
 
     else:
         raise SyntaxError("Invalid Instruction")
+
 
 with open("output.txt", "w") as f:
     for i, command in enumerate(commands):
