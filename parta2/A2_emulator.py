@@ -157,6 +157,6 @@ class App:
         score_bin = MEM[a + b] 
         score_dec = int(score_bin, 2)  # convert to decimal (0-15)
 
-        px.text(10, 0, f"{score_dec}", 7)
+        px.text(10, 0, f"{score_dec - 1}", 7)
 
 App()
