@@ -21,6 +21,15 @@ rarb 100
 acc 2
 to-mba # store tail score in MEM[100]
 
+# init food coords
+
+rarb 110
+acc 1
+to-mba # store Y in MEM[110]
+rarb 111
+acc 1
+to-mba # store X in MEM[111]
+
 # 0000 -> 1000 0 = 8
 # 0001 -> 0100 1 = 4
 # 0010 -> 0010 2 = 2
@@ -175,7 +184,14 @@ call DRAW # this deletes the needed pixel
 #
 
 
-SPAWN_NEW_FOOD: rcrd 17
+DRAW_CURRENT_FOOD: rarb 110 # get Y from MEM[110]
+from-mba # get Y value
+to-reg 3 # store Y in RD
+rarb 111 # get X from MEM[111]
+from-mba # get X value
+to-reg 2 # store X in RC
+# now RD:RC has the coordinates of the food
+
 call GET_ADDRESS_AND_INNER_COL
 call ENCODE_INNER_COLUMN
 # Draw the pixel
@@ -187,9 +203,6 @@ to-reg 0 # store in RA
 # now RB:RA has the address, inner col in R4
 from-reg 4 # get inner col from R4
 or*-mba # add the pixel to the screen while ignoring already lit pixels
-
-
-
 b start
 
 RANDOM: rarb 39
@@ -283,17 +296,30 @@ from-mba # get Y value
 to-reg 3 # store Y in RD
 # check collision with existing food
 from-reg 3 # get Y from RD
-xor 1
+rarb 110 # get food Y from MEM[110]
+xor-ba
 beqz CHECK_X_COLLISION # if Y is 1, go to X collision check
 b NO_EATEN
 CHECK_X_COLLISION: from-reg 2 # get X from RC
-xor 1
+rarb 111 # get food X from MEM[111]
+xor-ba # XOR with food X
 beqz EATEN
 b NO_EATEN # if X is 1, go to no eaten
 EATEN: rarb 100 # get tail score from MEM[100]
 inc*-mba # increment tail score
+b CREATE_NEW_FOOD
 
 NO_EATEN: ret
+
+CREATE_NEW_FOOD: rarb 110 # prepare RARB for storing food Y
+inc*-mba # store random Y in MEM[110]
+rarb 111 # prepare RARB for storing food X
+from-reg 0 # get random value from R0
+inc*-mba # store random X in MEM[111]
+# now food coords are stored in MEM[110] and MEM[111]
+b NO_EATEN
+
+
 
 # ----------------
 # Draw a pixel on the screen given X: RC, Y: RD
