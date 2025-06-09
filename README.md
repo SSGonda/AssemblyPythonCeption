@@ -40,7 +40,7 @@ This repository contains the relevant files for Project 1 of CS 21.
 
 ## How to Run Part A1
 
-The program runs as stated in the specifications. It takes 2 command-line arguments, where the first one would be the ilename containing Arch-242 assembly code, while the second one is bin or hex (denotes output format). It creates an output.txt which contains the assembled instructions.
+The program runs as stated in the specifications. It takes 2 command-line arguments, where the first one would be the filename containing Arch-242 assembly code, while the second one is bin or hex (denotes output format). It creates an output.txt which contains the assembled instructions.
 
 ## How to Run Part A2
 
