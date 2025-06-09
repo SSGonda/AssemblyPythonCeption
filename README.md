@@ -1,22 +1,28 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/KjUzOSFc)
 
-# Project 1 | Alien Love Letters
+# Project 1 | Alien Love Letters – Group Info & Execution Guide
 
-## Members
-Stephen James Gonda
+## Group Members
 
-Antonio Magpantay
+- Member 1: GONDA, Stephen James
+- Member 2: MAGPANTAY, Antonio
+- Member 3: MERCADO, Ervin Jerod
+- Member 4: BUGAOAN, Carl Joseph
 
-Ervin Jerod Mercado
+## Contributions
 
-Carl Joseph Bugaoan
+- Member 1: Part A
+- Member 2: Part A
+- Member 3: Part B instructions: 1-28, 31, 40, 55, 65-78
+- Member 4: Part B instructions: 33-34, 39, 47-53, partial on 19-21
 
 ## Description
+
 This repository contains the relevant files for Project 1 of CS 21.
 
-Note that the instructions loaded in Part B of the project are 16 bits long to be consistent with the format used in Part A.
+> > Note that the instructions loaded in Part B of the project are 16 bits long to be consistent with the format used in Part A. In example, Instructions 8 bits long can be loaded as is.
 
-Instructions 8 bits long can be loaded as is. Instructions 16 bits long (2 separate bytes) should be concatenated first before loading.
+> > Instructions 16 bits long (2 separate bytes) should be concatenated first before loading.
 
 ## Part A
 
@@ -29,3 +35,10 @@ Instructions 8 bits long can be loaded as is. Instructions 16 bits long (2 separ
 ## Part B
 
 `B_logisim.circ` contains the Logisim-based implementation for Arch-242
+
+## How to Run Part A1
+
+1.
+
+## How to Run Part A2
+1. 
