@@ -5,9 +5,7 @@
 
 # initialize vars
 call init_vars
-rarb 100
-acc 8
-to-mba
+
 # add test rcrd
 # rd/Y: 0001 rc/X: 0111
 # Y: 1 X: 7
@@ -73,7 +71,6 @@ to-reg 2 # store X in RC
 # now RD:RC has the coordinates of the player
 call GET_ADDRESS_AND_INNER_COL
 # at this point, RB:RA should have the address, and inner col should be in ACC
-
 call ENCODE_INNER_COLUMN
 # Draw the pixel
 to-reg 4 # store inner col in R4
@@ -178,65 +175,8 @@ call DRAW # this deletes the needed pixel
 #
 
 
-SPAWN_NEW_FOOD: call RANDOM
-acc 10        # Modulo 10 to get 0-9
-and-mba
-to-reg 4      # Store index in RE
-
-# multiply by 2
-from-reg 4
-add-mba 
-to-reg 4
-
-# get the value from reg 4, add 50
-rarb 31
-from-reg 4
-add-mba
-to-reg 0 # store it in reg 0
-acc 0
-to-reg 1
-# add it to rc, x-value
-from-mba
-to-reg 2
-rarb 32 # store food x loc to mem 21
-from-reg 2
-to-mba
-# add to rd, y-value
-inc*-reg 0
-from-mba
-to-reg 3
-rarb 33 # store food y loc to mem 22
-from-reg 3
-to-mba
-
-# draw food
-call GET_ADDRESS_AND_INNER_COL
-call ENCODE_INNER_COLUMN
-acc 1          
-call DRAW
-
-
 
 b start
-
-RANDOM: rarb 39
-from-mba      
-to-reg 4          
-rot-r
-rot-r
-and-mba       
-to-reg 0      
-from-reg 4    
-rot-r
-and-mba       
-xor-mba       
-from-reg 4
-rot-l
-to-mba        
-# mask to 4 bits
-acc 15
-and-mba
-ret
 
 ENCODE_INNER_COLUMN: beqz BIT_0 # all 0s, BIT_0
 b-bit 3 CHECK_BIT_2 # bit 3 is one, either 1 or 3
@@ -466,102 +406,7 @@ gameover: shutdown
 #  FUNCTIONS USED BY THINGS ABOVE
 # =------------------------------=
 
-init_vars: rarb 31 # 50 offset
-acc 15
-add 15
-add 15
-add 5
-to-mba
-
-# loc 0
-rarb 50 
-acc 0
-to-mba     
-rarb 51
-acc 4
-to-mba     
-
-# loc 1
-rarb 52
-acc 3
-to-mba
-rarb 53
-acc 1
-to-mba
-
-# loc 2
-rarb 54
-acc 10
-to-mba
-rarb 55
-acc 8
-to-mba
-
-# loc 3
-rarb 56
-acc 7
-to-mba
-rarb 57
-acc 5
-to-mba
-
-# loc 4
-rarb 58
-acc 6
-to-mba
-rarb 59
-acc 4
-to-mba
-
-# loc 5
-rarb 60
-acc 2
-to-mba
-rarb 61
-acc 9
-to-mba
-
-# loc 6
-rarb 62
-acc 5
-to-mba
-rarb 63
-acc 10
-to-mba
-
-# loc 7
-rarb 64
-acc 1
-to-mba
-rarb 65
-acc 2
-to-mba
-
-# loc 8
-rarb 66
-acc 8
-to-mba
-rarb 67
-acc 3
-to-mba
-
-# loc 9
-rarb 68
-acc 4
-to-mba
-rarb 69
-acc 6
-to-mba
-
-# for random
-rarb 39      
-acc 1
-to-mba
-
-rarb 92 # upper nibble of 192
+init_vars: rarb 92 # upper nibble of 192
 acc 12
 to-mba # store upper nibble of 192 in MEM[92]
 ret
-
-   
-

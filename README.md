@@ -32,18 +32,36 @@ This repository contains the relevant files for Project 1 of CS 21.
 
 `A2_emulator.py` contains the pyxel instance acting as the monitor for executing Arch 242 commands.
 
-`A3.asm` contains the assembly code for running the snake program
+`input.asm` contains the assembly code for running the snake program
+
+`snek.asm` contains the assembly code for Part A3
+
+### How to use
+
+#### Part A1
+
+Running from the root,
+Simply run,
+`python ./parta1/A1.py ./path/toyour.asm <hex | bin>`
+(Replace python with whatever python version you have)
+And replace hex or bin with your preferred output format.
+This should output,
+`output.txt` at the root of your directory.
+
+#### Part A2
+
+Running from the root,
+Simply run,
+`python ./parta1/A2_emulator.py ./path/toyour.asm`
+(Replace python with whatever python versionyou have)
+
+#### Part A3
+
+Running from the root,
+Simply run,
+`python ./parta1/A2_emulator.py ./parta3/input.asm`
+(Replace python with whatever python versionyou have)
 
 ## Part B
 
 `B_logisim.circ` contains the Logisim-based implementation for Arch-242
-
-## How to Run Part A1
-
-The program runs as stated in the specifications. It takes 2 command-line arguments, where the first one would be the filename containing Arch-242 assembly code, while the second one is bin or hex (denotes output format). It creates an output.txt which contains the assembled instructions.
-
-## How to Run Part A2
-
-This part is divided into two files: `A2.py` and `A2_emulator.py`
-A2_emulator.py will be the one to be used to run the asm file.
-
