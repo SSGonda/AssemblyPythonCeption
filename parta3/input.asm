@@ -205,25 +205,6 @@ from-reg 4 # get inner col from R4
 or*-mba # add the pixel to the screen while ignoring already lit pixels
 b start
 
-RANDOM: rarb 39
-from-mba      
-to-reg 4          
-rot-r
-rot-r
-and-mba       
-to-reg 0      
-from-reg 4    
-rot-r
-and-mba       
-xor-mba       
-from-reg 4
-rot-l
-to-mba        
-# mask to 4 bits
-acc 15
-and-mba
-ret
-
 
 ENCODE_INNER_COLUMN: beqz BIT_0 # all 0s, BIT_0
 b-bit 3 CHECK_BIT_2 # bit 3 is one, either 1 or 3
@@ -312,10 +293,17 @@ b CREATE_NEW_FOOD
 NO_EATEN: ret
 
 CREATE_NEW_FOOD: rarb 110 # prepare RARB for storing food Y
-inc*-mba # store random Y in MEM[110]
+from-mba # get Y from MEM[110]
+add 3
+bcd
+clr-cf
+to-mba # store new Y in MEM[110]
 rarb 111 # prepare RARB for storing food X
-from-reg 0 # get random value from R0
-inc*-mba # store random X in MEM[111]
+from-mba # get X from MEM[111]
+add 2
+bcd
+clr-cf
+to-mba # store new X in MEM[111]
 # now food coords are stored in MEM[110] and MEM[111]
 b NO_EATEN
 
