@@ -177,7 +177,7 @@ class App:
         score_dec = int(score_bin, 2)  # convert to decimal (0-15)
         
         # convert score 
-        score_str = f"{score_dec:X}"  
+        score_str = f"{score_dec - 2:X}"  
         
         digit_width, digit_height = 3, 5  # digit size
         start_col = 11  # start at column 11 
