@@ -175,8 +175,42 @@ call DRAW # this deletes the needed pixel
 #
 
 
+SPAWN_NEW_FOOD: rcrd 17
+call GET_ADDRESS_AND_INNER_COL
+call ENCODE_INNER_COLUMN
+# Draw the pixel
+to-reg 4 # store inner col in R4
+from-reg 3 # get upper nibble
+to-reg 1 # store in RB
+from-reg 2 # get lower nibble
+to-reg 0 # store in RA
+# now RB:RA has the address, inner col in R4
+from-reg 4 # get inner col from R4
+or*-mba # add the pixel to the screen while ignoring already lit pixels
+
+
 
 b start
+
+RANDOM: rarb 39
+from-mba      
+to-reg 4          
+rot-r
+rot-r
+and-mba       
+to-reg 0      
+from-reg 4    
+rot-r
+and-mba       
+xor-mba       
+from-reg 4
+rot-l
+to-mba        
+# mask to 4 bits
+acc 15
+and-mba
+ret
+
 
 ENCODE_INNER_COLUMN: beqz BIT_0 # all 0s, BIT_0
 b-bit 3 CHECK_BIT_2 # bit 3 is one, either 1 or 3
@@ -247,7 +281,19 @@ to-reg 2 # store X in RC
 rarb 91 # get Y from MEM[91]
 from-mba # get Y value
 to-reg 3 # store Y in RD
-ret
+# check collision with existing food
+from-reg 3 # get Y from RD
+xor 1
+beqz CHECK_X_COLLISION # if Y is 1, go to X collision check
+b NO_EATEN
+CHECK_X_COLLISION: from-reg 2 # get X from RC
+xor 1
+beqz EATEN
+b NO_EATEN # if X is 1, go to no eaten
+EATEN: rarb 100 # get tail score from MEM[100]
+inc*-mba # increment tail score
+
+NO_EATEN: ret
 
 # ----------------
 # Draw a pixel on the screen given X: RC, Y: RD
@@ -406,7 +452,100 @@ gameover: shutdown
 #  FUNCTIONS USED BY THINGS ABOVE
 # =------------------------------=
 
-init_vars: rarb 92 # upper nibble of 192
+init_vars: rarb 31 # 50 offset
+acc 15
+add 15
+add 15
+add 5
+to-mba
+
+# loc 0
+rarb 50 
+acc 0
+to-mba     
+rarb 51
+acc 4
+to-mba     
+
+# loc 1
+rarb 52
+acc 3
+to-mba
+rarb 53
+acc 1
+to-mba
+
+# loc 2
+rarb 54
+acc 10
+to-mba
+rarb 55
+acc 8
+to-mba
+
+# loc 3
+rarb 56
+acc 7
+to-mba
+rarb 57
+acc 5
+to-mba
+
+# loc 4
+rarb 58
+acc 6
+to-mba
+rarb 59
+acc 4
+to-mba
+
+# loc 5
+rarb 60
+acc 2
+to-mba
+rarb 61
+acc 9
+to-mba
+
+# loc 6
+rarb 62
+acc 5
+to-mba
+rarb 63
+acc 10
+to-mba
+
+# loc 7
+rarb 64
+acc 1
+to-mba
+rarb 65
+acc 2
+to-mba
+
+# loc 8
+rarb 66
+acc 8
+to-mba
+rarb 67
+acc 3
+to-mba
+
+# loc 9
+rarb 68
+acc 4
+to-mba
+rarb 69
+acc 6
+to-mba
+
+# for random
+rarb 39      
+acc 1
+to-mba
+
+rarb 92 # upper nibble of 192
 acc 12
 to-mba # store upper nibble of 192 in MEM[92]
 ret
+
