@@ -20,9 +20,9 @@
 
 This repository contains the relevant files for Project 1 of CS 21.
 
-> > Note that the instructions loaded in Part B of the project are 16 bits long to be consistent with the format used in Part A. In example, Instructions 8 bits long can be loaded as is.
+> Note that the instructions loaded in Part B of the project are 16 bits long to be consistent with the format used in Part A. In example, Instructions 8 bits long can be loaded as is.
 
-> > Instructions 16 bits long (2 separate bytes) should be concatenated first before loading.
+> Instructions 16 bits long (2 separate bytes) should be concatenated first before loading.
 
 ## Part A
 
@@ -60,7 +60,7 @@ Running from the root,
 
 Simply run,
 
-`python ./parta1/A2_emulator.py ./path/toyour.asm`
+`python ./parta2/A2_emulator.py ./path/toyour.asm`
 
 (Replace python with whatever python version you have)
 
@@ -70,9 +70,26 @@ Running from the root,
 
 Simply run,
 
-`python ./parta1/A2_emulator.py ./parta3/input.asm`
+`python ./parta2/A2_emulator.py ./parta3/input.asm`
 
 (Replace python with whatever python version you have)
+
+### Development Convenience
+
+- We had opted to add support for both comments and branch labelling for easier developer experience! At the moment we support only inline comments denoted by `#` similar to RISC V.
+
+- We had also opted to use the labelling system used by RISC V to ease the usage of branch instructions for our snake game.
+  - Kindly note that this implementation only supports when the instruction is on the same line as the label.
+E.g:
+```
+this_works: nop
+```
+```
+this_wont_work:
+                nop
+```
+
+
 
 ## Part B
 
