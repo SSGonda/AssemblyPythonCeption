@@ -4,12 +4,16 @@
 
 ## Members:
 Stephen James Gonda
+
 Antonio Magpantay
 
 Ervin Jerod Mercado
+
 Carl Joseph Bugaoan
 
+
 This repository contains the relevant files for Project 1 of CS 21.
+
 
 Note that the instructions loaded in Part B of the project are 16 bits long to be consistent with the format used in Part A.
 
