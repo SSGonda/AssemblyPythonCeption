@@ -2,8 +2,17 @@
 
 # Project 1 | Alien Love Letters
 
+## Members:
+Stephen James Gonda
+Antonio Magpantay
+
+Ervin Jerod Mercado
+Carl Joseph Bugaoan
 
 This repository contains the relevant files for Project 1 of CS 21.
+
+Note that the instructions loaded in Part B of the project are 16 bits long to be consistent with the format used in Part A.
+
 ## Part A
 
 `A1.py` contains the assembler for Part A
@@ -14,3 +23,4 @@ This repository contains the relevant files for Project 1 of CS 21.
 
 ## Part B
 
+`B_logisim.circ` contains the Logisim-based implementation for Arch-242
