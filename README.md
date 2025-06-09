@@ -41,26 +41,38 @@ This repository contains the relevant files for Project 1 of CS 21.
 #### Part A1
 
 Running from the root,
+
 Simply run,
+
 `python ./parta1/A1.py ./path/toyour.asm <hex | bin>`
+
 (Replace python with whatever python version you have)
+
 And replace hex or bin with your preferred output format.
+
 This should output,
+
 `output.txt` at the root of your directory.
 
 #### Part A2
 
 Running from the root,
+
 Simply run,
+
 `python ./parta1/A2_emulator.py ./path/toyour.asm`
-(Replace python with whatever python versionyou have)
+
+(Replace python with whatever python version you have)
 
 #### Part A3
 
 Running from the root,
+
 Simply run,
+
 `python ./parta1/A2_emulator.py ./parta3/input.asm`
-(Replace python with whatever python versionyou have)
+
+(Replace python with whatever python version you have)
 
 ## Part B
 
