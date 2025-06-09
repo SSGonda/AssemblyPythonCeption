@@ -18,7 +18,7 @@ rarb 91 # store Y value init
 acc 3
 to-mba # store Y value in MEM[91]
 rarb 100
-acc 2
+acc 14
 to-mba # store tail score in MEM[100]
 
 # init food coords

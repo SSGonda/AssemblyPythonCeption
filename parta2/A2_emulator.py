@@ -2,25 +2,6 @@ import pyxel as px
 from A2 import MEM, REG, emulate_instruction
 import argparse
 
-digit_font = {
-            '0': ['111', '101', '101', '101', '111'],
-            '1': ['010', '110', '010', '010', '111'],
-            '2': ['111', '001', '111', '100', '111'],
-            '3': ['111', '001', '111', '001', '111'],
-            '4': ['101', '101', '111', '001', '001'],
-            '5': ['111', '100', '111', '001', '111'],
-            '6': ['111', '100', '111', '101', '111'],
-            '7': ['111', '001', '001', '001', '001'],
-            '8': ['111', '101', '111', '101', '111'],
-            '9': ['111', '101', '111', '001', '111'],
-            'A': ['111', '101', '111', '101', '101'],  
-            'B': ['110', '101', '110', '101', '110'],  
-            'C': ['111', '100', '100', '100', '111'],  
-            'D': ['110', '101', '101', '101', '110'],  
-            'E': ['111', '100', '111', '100', '111'], 
-            'F': ['111', '100', '111', '100', '100']  
-        }
-
 WIDTH = 20
 HEIGHT = 10
 FPS = 2048
@@ -175,21 +156,7 @@ class App:
 
         score_bin = MEM[a + b] 
         score_dec = int(score_bin, 2)  # convert to decimal (0-15)
-        
-        # convert score 
-        score_str = f"{score_dec - 2:X}"  
-        
-        digit_width, digit_height = 3, 5  # digit size
-        start_col = 11  # start at column 11 
-        
-        if score_str in digit_font:
-            for y in range(digit_height):
-                for x in range(digit_width):
-                    if digit_font[score_str][y][x] == '1':
-                        px.pset(
-                            x + start_col,  
-                            y + 2,  
-                            7  
-                        )
+
+        px.text(10, 0, f"{score_dec}", 7)
 
 App()
